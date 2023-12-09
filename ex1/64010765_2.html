@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8" />
+        <title>My test page</title>
+    </head>
+
+    <body>
+        <form id="form1">
+            <fieldset>
+                <legend><i>Contact Information</i></legend>
+                <label for="fname">First name:</label>
+                <input type="text" id="fname" name="fname"><br>
+                <label for="lname">Last name:</label>
+                <input type="text" id="lname" name="lname"><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email"><br>
+            </fieldset>
+
+            <fieldset>
+                <legend><i>Competition Question</i></legend>
+                <label>How tall is the Eiffel Tower in Paris, France?</label><br>
+                <input type="radio" id="584ft" name="choice" value="584">
+                <label for="584ft">584ft</label><br>
+                <input type="radio" id="784ft" name="choice" value="784">
+                <label for="784ft">784ft</label><br>
+                <input type="radio" id="984ft" name="choice" value="984">
+                <label for="984ft">984ft</label><br>
+                <input type="radio" id="1184ft" name="choice" value="1184">
+                <label for="1184ft">1184ft</label>
+            </fieldset>
+
+            <fieldset>
+                <legend><i>Tiebreaker Question</i></legend>
+                <label for="reason">In 25 words or less, say why you would like to win $10,000:</label><br>
+                <textarea id="reason" name="reason" cols="30" rows="10"></textarea><br>
+            </fieldset>
+
+            <fieldset>
+                <legend><i>Enter competition</i></legend>
+                <button type="submit" form="form1" value="Submit">Enter Competition</button>
+            </fieldset>
+        </form>
+    </body>
+
+</html>

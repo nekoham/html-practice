@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <div id="maincontainer"></div>
+        <script>
+            var hd = document.createElement("h2");
+            hd.innerText = "Exercise 04: JavaScript&DOM";
+            hd.style.display = "block";
+            hd.style.marginBottom = "20px";
+
+            let worker = new Worker("64010765.js");
+            console.log(typeof(worker));
+
+            var btd = document.createElement("button");
+            var btdStatus = 0;
+            btd.innerText = "Click me to display Date and Time.";
+            btd.addEventListener("click", function() {
+                if (btdStatus == 0) {
+
+                    worker.postMessage("start");
+
+                    btdHolder.style.display = "block";
+                    btd.style.position = "fixed";
+                    btd.style.top = "0";
+                    btd.style.right = "0";
+
+                    btdStatus = 1;
+            
+                } else {
+                    btdHolder.style.display = "none";
+                    btd.style.position = "static";
+
+                    worker.postMessage("stop");
+
+                    btdStatus = 0;
+                }
+            });
+            btd.style.display = "block";
+            btd.style.marginBottom = "30px";
+
+            worker.addEventListener("message", function(e) {
+                 btd.innerText = e.data[0];
+                 btd.style.backgroundColor = e.data[1];
+                 btd.style.color = e.data[2];
+		    });
+
+            var btdHolder = document.createElement("button");
+            btdHolder.innerText = "INVISIBLE BUTTON";
+            btdHolder.style.display = "none";
+            btdHolder.style.marginBottom = "30px";
+            btdHolder.style.visibility = "hidden";
+
+
+            var personal = document.createElement("a");
+            personal.innerText = "Personal Info";
+            personal.setAttribute("href", "#");
+            personal.style.color = "plum"
+            personal.style.marginBottom = "25px";
+            personal.addEventListener("click", function() {
+                if (infoList.style.display == "none") {
+                    infoList.style.display = "block";
+                }
+                else {
+                    infoList.style.display = "none";
+                }
+            });
+            personal.addEventListener("mouseenter", function() {
+                personal.style.backgroundColor = "yellow";
+                personal.style.color = "blue";
+            });
+            personal.addEventListener("mouseleave", function() {
+                personal.style.backgroundColor = "transparent";
+                personal.style.color = "plum";
+            });
+
+            var infoList = document.createElement("ul");
+            infoList.style.display = "none"
+            var infoItem1 = document.createElement("li");
+            infoItem1.innerText = "Woramet Thammajariyawat, ID: 64010765";
+            infoList.appendChild(infoItem1);
+
+            var infoItem2 = document.createElement("li");
+            infoItem2.innerText = "Subject: WEB APPLICATION DEVELOPMENT";
+            infoList.appendChild(infoItem2);
+
+            var infoItem3 = document.createElement("li");
+            infoItem3.innerText = "Semester: 2";
+            infoList.appendChild(infoItem3);
+
+            var snapshot = document.createElement("h1");
+            snapshot.style.display = "block";
+            snapshot.innerText = "Snapshots";
+
+            var picList = document.createElement("ul");
+
+            var listItem1 = document.createElement("li");
+            var anchor1 = document.createElement("a");
+            anchor1.innerText = "Fireworks";
+            anchor1.style.color = "blue";
+            anchor1.setAttribute("href", "#");
+            anchor1.addEventListener("click", function() {
+                picture.setAttribute("src", srcfirework);
+            });
+            listItem1.appendChild(anchor1);
+            picList.appendChild(listItem1);
+
+            var listItem2 = document.createElement("li");
+            var anchor2 = document.createElement("a");
+            anchor2.innerText = "Crest";
+            anchor2.style.color = "blue";
+            anchor2.setAttribute("href", "#");
+            anchor2.addEventListener("click", function() {
+                picture.setAttribute("src", srccrest);
+            });
+            listItem2.appendChild(anchor2);
+            picList.appendChild(listItem2);
+
+            var listItem3 = document.createElement("li");
+            var anchor3 = document.createElement("a");
+            anchor3.innerText = "Action";
+            anchor3.style.color = "blue";
+            anchor3.setAttribute("href", "#");
+            anchor3.addEventListener("click", function() {
+                picture.setAttribute("src", srcaction);
+            });
+            listItem3.appendChild(anchor3);
+            picList.appendChild(listItem3);
+
+            var listItem4 = document.createElement("li");
+            var anchor4 = document.createElement("a");
+            anchor4.innerText = "Buffalo";
+            anchor4.style.color = "blue";
+            anchor4.setAttribute("href", "#");
+            anchor4.addEventListener("click", function() {
+                picture.setAttribute("src", srcbuffalo);
+            });
+            listItem4.appendChild(anchor4);
+            picList.appendChild(listItem4);
+
+            var picture = document.createElement("img");
+            picture.setAttribute("src", "https://imgz.io/images/2023/02/22/Kmitl.jpeg");
+            
+            var srcfirework = "https://imgz.io/images/2023/02/22/pyrotechnics-fireworks-background.png";
+            var srccrest = "https://imgz.io/images/2023/02/22/depositphotos_10666301-stock-photo-golden-shield-and-golden-ribbon.webp";
+            var srcaction = "https://imgz.io/images/2023/02/22/snowboarder-action-extreme-winter-sports-260nw-1531803602.webp";
+            var srcbuffalo = "https://imgz.io/images/2023/02/22/istockphoto-1060986360-612x612.jpeg";
+
+            document.getElementById("maincontainer").appendChild(hd);
+            document.getElementById("maincontainer").appendChild(btd);
+            document.getElementById("maincontainer").appendChild(btdHolder);
+            document.getElementById("maincontainer").appendChild(personal);
+            document.getElementById("maincontainer").appendChild(infoList);
+            document.getElementById("maincontainer").appendChild(snapshot);
+            document.getElementById("maincontainer").appendChild(picList);
+            document.getElementById("maincontainer").appendChild(picture);
+        </script>
+    </body>
+</html>
